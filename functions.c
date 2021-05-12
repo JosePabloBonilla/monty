@@ -42,3 +42,20 @@ void pall(stack_t **stack)
 		tmp = tmp->next;
 	}
 }
+/**
+ * pint - print the value at the top of the stack
+ * @stack: stack
+ * @line_num: line number
+ */
+void pint(stack_t **stack, unsigned int line_num)
+{
+	stack_t *tmp = NULL;
+
+	if (*stack == NULL || stack == NULL)
+	{
+		printf("%d: this stack is empty\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	tmp = *stack;
+	printf("%d\n", tmp->n);
+}

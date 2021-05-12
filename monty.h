@@ -6,6 +6,10 @@
 #include <unistd.h>
 #include <string.h>
 
+#define EXIT_SUCCESS 0
+#define EXIT_FAILURE 1
+extern int store_var; /* global variable to store value*/
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -35,5 +39,9 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+void push(stack_t **stack);
+void pall(stack_t **stack);
+void pint(stack_t **stack, unsinged int line_num);
 
 #endif
