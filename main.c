@@ -29,6 +29,9 @@ int main(int argc, char *argv[])
 		line_len++;
 		token = strtok(buffer, delim);
 		store_var = strtok(NULL, delim);
+		
+		if (token == NULL || token[0] == '#')
+			continue;
 
 		if (token != NULL)
 			op.f = get_func(token);
@@ -36,10 +39,27 @@ int main(int argc, char *argv[])
 		if (op.f == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_len, token);
+			free(buffer);
+			free_list(stack);
+			fclose(file);
 			exit(EXIT_FAILURE);
 		}
 		op.f(&stack, line_len);
 	}
 	fclose(file);
+	free(buffer);
+	free_list(stack);
 	exit(EXIT_SUCCESS);
+}
+
+void free_list(stack_t *stack)
+{
+	stack_t *pointer;
+
+	while (stack != NULL)
+	{
+		pointer = stack->next;
+		free(stack);
+		stack = pointer;
+	}
 }
