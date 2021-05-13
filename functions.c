@@ -6,14 +6,22 @@
 void push(stack_t **stack, unsigned int line_num)
 {
 	stack_t *new = NULL;
-	
+
 	new = malloc(sizeof(stack_t));
+
 	if (new == NULL)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_num);
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	new->n = store_var; /* store in a global varible */
+	
+	if (atoi(store_var) == 0)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+
+	new->n = atoi(store_var); /* store in a global varible */
 	new->prev = NULL;
 
 	if (*stack == NULL) /* stack = head of stack */
@@ -22,6 +30,7 @@ void push(stack_t **stack, unsigned int line_num)
 		*stack = new;
 		return;
 	}
+	
 	new->next = *stack;
 	(*stack)->prev = new;
 	*stack = new;

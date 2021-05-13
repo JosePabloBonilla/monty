@@ -1,5 +1,4 @@
 #include "monty.h"
-int store_var;
 /**
  * main - opens monty interface
  * @argc: argument count
@@ -11,7 +10,8 @@ int main(int argc, char *argv[])
 	FILE *file = fopen(argv[1], "r");
 	unsigned int line_len = 0;
 	size_t len = 0;
-	char *buffer = NULL, *token = NULL;
+	char *buffer = NULL, *token = NULL, *delim = "\n\t ";
+
 	stack_t *stack = NULL;
 
 	if (argc != 2)
@@ -27,8 +27,9 @@ int main(int argc, char *argv[])
 	while (getline(&buffer, &len, file) != -1)
 	{
 		line_len++;
-		token = strtok(buffer, "\n\t ");
-		
+		token = strtok(buffer, delim);
+		store_var = strtok(NULL, delim);
+
 		if (token != NULL)
 		{
 			get_func(token, &stack, line_len);
