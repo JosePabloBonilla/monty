@@ -2,6 +2,7 @@
 /**
  * push - push element to stack
  * @stack: stack
+ * @line_num: line num
  */
 void push(stack_t **stack, unsigned int line_num)
 {
@@ -14,7 +15,7 @@ void push(stack_t **stack, unsigned int line_num)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	
+
 	if (atoi(store_var) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_num);
@@ -30,7 +31,7 @@ void push(stack_t **stack, unsigned int line_num)
 		*stack = new;
 		return;
 	}
-	
+
 	new->next = *stack;
 	(*stack)->prev = new;
 	*stack = new;
@@ -38,6 +39,7 @@ void push(stack_t **stack, unsigned int line_num)
 /**
  * pall - prints all the values in the stack
  * @stack: stack
+ * @line_num: line num
  */
 void pall(stack_t **stack, unsigned int line_num)
 {
