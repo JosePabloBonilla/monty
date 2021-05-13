@@ -47,6 +47,7 @@ void (*get_func(char *token))(stack_t **stack, unsigned int line_num);
 void push(stack_t **stack, unsigned int line_num);
 void pall(stack_t **stack, unsigned int line_num);
 void pint(stack_t **stack, unsigned int line_num);
+void nop(stack_t **stack_t, unsigned int line_num);
 void free_list(stack_t *stack);
 
 #endif
