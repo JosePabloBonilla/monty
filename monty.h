@@ -9,7 +9,7 @@
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
 
-char *store_var; /* global variable to store value*/
+extern char *store_var; /* global variable to store value*/
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -43,8 +43,7 @@ typedef struct instruction_s
 
 /*Prototypes*/
 
-void get_func(char *token, stack_t **stack, unsigned int line_num);
-void open_file(char *filename);
+void (*get_func(char *token))(stack_t **stack, unsigned int line_num);
 void push(stack_t **stack, unsigned int line_num);
 void pall(stack_t **stack, unsigned int line_num);
 void pint(stack_t **stack, unsigned int line_num);

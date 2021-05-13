@@ -11,8 +11,8 @@ int main(int argc, char *argv[])
 	unsigned int line_len = 1;
 	size_t len = 0;
 	char *buffer = NULL, *token = NULL, *delim = "\n\t ";
-
 	stack_t *stack = NULL;
+	instruction_t op;
 
 	if (argc != 2)
 	{
@@ -31,9 +31,14 @@ int main(int argc, char *argv[])
 		store_var = strtok(NULL, delim);
 
 		if (token != NULL)
+			op.f = get_func(token);
+
+		if (op.f == NULL)
 		{
-			get_func(token, &stack, line_len);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_len, token);
+			exit(EXIT_FAILURE);
 		}
+		op.f(&stack, line_len);
 	}
 	fclose(file);
 	exit(EXIT_SUCCESS);
