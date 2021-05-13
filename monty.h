@@ -45,5 +45,6 @@ void (*get_func(char *token));
 void push(stack_t **stack);
 void pall(stack_t **stack);
 void pint(stack_t **stack, unsigned int line_num);
+void get_func(char *token, stack_t **stack, unsigned int line_num)
 
 #endif

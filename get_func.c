@@ -8,11 +8,11 @@
  * Return: function or NULL
  */
 
-void (*get_func(char *token))
+void get_func(char *token, stack_t **stack, unsigned int line_num)
 {
-	int i;
+	int i = 0;
 
-	instruction_t opcodes[] = {
+	instruction_t ops[] = {
 			{"push", push},
 			{"pall", pall},
 			{"pint", pint},
@@ -23,12 +23,15 @@ void (*get_func(char *token))
 			{"NULL, NULL"}
 	};
 	
-	i = 0;
-	while (opcodes[i].f != NULL)
+	while (ops[i].opcode != NULL)
 	{
-		if (strcmp(token, opcodes[i].opcode) == 0)
-			return (opcodes[i].f);
+		if (strcmp(ops[i].opcode, token) == 0)
+		{
+			ops[i].f(stack, line_num);
+			return;
+		}
 		i++;
 	}
-	return (NULL);
+	printf("L%d: unknown instruction %s\n", line_num, token);
+	exit(EXIT_FAILURE);
 }
