@@ -40,8 +40,10 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void (*get_func(char *token));
+
 void push(stack_t **stack);
 void pall(stack_t **stack);
-void pint(stack_t **stack, unsinged int line_num);
+void pint(stack_t **stack, unsigned int line_num);
 
 #endif

@@ -22,7 +22,7 @@ void push(stack_t **stack)
 		*stack = new;
 		return;
 	}
-	new-next = *stack;
+	new->next = *stack;
 	(*stack)->prev = new;
 	*stack = new;
 }
