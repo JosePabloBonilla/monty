@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
 	FILE *file = fopen(argv[1], "r");
-	unsigned int line_len = 1;
+	unsigned int line_len = 0;
 	size_t len = 0;
 	char *buffer = NULL, *token = NULL, *delim = "\n\t ";
 	stack_t *stack = NULL;
