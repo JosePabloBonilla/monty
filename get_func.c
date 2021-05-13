@@ -8,7 +8,7 @@
  * Return: function or NULL
  */
 
-void get_func(char **all_tokens, stack_t **stack, unsigned int line_num)
+void get_func(char *token, stack_t **stack, unsigned int line_num)
 {
 	size_t i = 0;
 
@@ -20,18 +20,18 @@ void get_func(char **all_tokens, stack_t **stack, unsigned int line_num)
 			{"swap", swap},
 			{"add", add},
 			{"nop", nop},*/
-			{NULL, NULL}
+			{"NULL, NULL"}
 	};
 	
 	while (ops[i].opcode != NULL)
 	{
-		if (strcmp(ops[i].opcode, all_tokens[0]) == 0)
+		if (strcmp(ops[i].opcode, token) == 0)
 		{
 			ops[i].f(stack, line_num);
 			return;
 		}
 		i++;
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_num, all_tokens[0]);
+	printf("L%d: unknown instruction %s\n", line_num, token);
 	exit(EXIT_FAILURE);
 }
