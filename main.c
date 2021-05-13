@@ -1,4 +1,5 @@
 #include "monty.h"
+void free_list(stack_t *stack);
 /**
  * main - opens monty interface
  * @argc: argument count
@@ -29,7 +30,7 @@ int main(int argc, char *argv[])
 		line_len++;
 		token = strtok(buffer, delim);
 		store_var = strtok(NULL, delim);
-		
+
 		if (token == NULL || token[0] == '#')
 			continue;
 
@@ -51,6 +52,11 @@ int main(int argc, char *argv[])
 	free_list(stack);
 	exit(EXIT_SUCCESS);
 }
+
+/**
+ * free_list - frees stack
+ * @stack: le stack
+ */
 
 void free_list(stack_t *stack)
 {
