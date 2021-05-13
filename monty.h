@@ -43,10 +43,10 @@ typedef struct instruction_s
 
 /*Prototypes*/
 
-void get_func((char *token)(stack_t **stack, unsigned int line_num));
+void get_func(char *token, stack_t **stack, unsigned int line_num);
 void open_file(char *filename);
-void push(stack_t **stack);
-void pall(stack_t **stack);
+void push(stack_t **stack, unsigned int line_num);
+void pall(stack_t **stack, unsigned int line_num);
 void pint(stack_t **stack, unsigned int line_num);
 
 #endif

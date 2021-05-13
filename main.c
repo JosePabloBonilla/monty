@@ -1,4 +1,5 @@
 #include "monty.h"
+int store_var;
 /**
  * main - opens monty interface
  * @argc: argument count
@@ -7,14 +8,33 @@
  */
 int main(int argc, char *argv[])
 {
+	FILE *file = fopen(argv[1], "r");
+	unsigned int line_len = 0;
+	size_t len = 0;
+	char *buffer = NULL, *token = NULL;
+	stack_t *stack = NULL;
+
 	if (argc != 2)
 	{
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	else
+	if (file == NULL)
 	{
-		open_file(argv[1]);
-		return (0);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
 	}
+	while (getline(&buffer, &len, file) != -1)
+	{
+		line_len++;
+		token = strtok(buffer, "\n\t ");
+		if (token != NULL)
+		{
+			get_func(token, &stack, line_len);
+		}
+	}
+	free(buffer);
+	free(token);
+	fclose(file);
+	exit(EXIT_SUCCESS);
 }

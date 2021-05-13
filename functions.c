@@ -3,14 +3,14 @@
  * push - push element to stack
  * @stack: stack
  */
-void push(stack_t **stack)
+void push(stack_t **stack, unsigned int line_num)
 {
 	stack_t *new = NULL;
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		printf("Error: unable to find memory\n");
+		fprintf(stderr, "L%u: usage: push integer\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 	new->n = store_var; /* store in a global varible */
@@ -30,8 +30,9 @@ void push(stack_t **stack)
  * pall - prints all the values in the stack
  * @stack: stack
  */
-void pall(stack_t **stack)
+void pall(stack_t **stack, unsigned int line_num)
 {
+	(void)line_num;
 	stack_t *tmp = *stack;
 
 	if ((*stack) == NULL)

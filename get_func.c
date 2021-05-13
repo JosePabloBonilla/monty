@@ -8,9 +8,9 @@
  * Return: function or NULL
  */
 
-void get_func((char *token)(stack_t **stack, unsigned int line_num))
+void get_func(char *token, stack_t **stack, unsigned int line_num)
 {
-	int i = 0;
+	size_t i = 0;
 
 	instruction_t ops[] = {
 			{"push", push},
