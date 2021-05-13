@@ -20,7 +20,7 @@ void get_func(char *token, stack_t **stack, unsigned int line_num)
 			{"swap", swap},
 			{"add", add},
 			{"nop", nop},*/
-			{"NULL, NULL"}
+			{NULL, NULL}
 	};
 	
 	while (ops[i].opcode != NULL)

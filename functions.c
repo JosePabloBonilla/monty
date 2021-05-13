@@ -6,7 +6,7 @@
 void push(stack_t **stack, unsigned int line_num)
 {
 	stack_t *new = NULL;
-
+	
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
@@ -32,8 +32,8 @@ void push(stack_t **stack, unsigned int line_num)
  */
 void pall(stack_t **stack, unsigned int line_num)
 {
-	(void)line_num;
 	stack_t *tmp = *stack;
+	(void)line_num;
 
 	if ((*stack) == NULL)
 		return;

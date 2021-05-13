@@ -28,13 +28,12 @@ int main(int argc, char *argv[])
 	{
 		line_len++;
 		token = strtok(buffer, "\n\t ");
+		
 		if (token != NULL)
 		{
 			get_func(token, &stack, line_len);
 		}
 	}
-	free(buffer);
-	free(token);
 	fclose(file);
 	exit(EXIT_SUCCESS);
 }
