@@ -6,11 +6,12 @@
 void push(stack_t **stack, unsigned int line_num)
 {
 	stack_t *new = NULL;
+	(void)line_num;
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_num);
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	new->n = store_var; /* store in a global varible */
@@ -32,12 +33,10 @@ void push(stack_t **stack, unsigned int line_num)
  */
 void pall(stack_t **stack, unsigned int line_num)
 {
-	(void)line_num;
 	stack_t *tmp = *stack;
+	(void)line_num;
 
-	if ((*stack) == NULL)
-		return;
-	while (tmp)
+	while (tmp != NULL)
 	{
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
