@@ -83,10 +83,35 @@ void pop(stack_t **stack, unsigned int line_num)
 
 	if (*stack == NULL || stack == NULL)
 	{
-		printf("L%d: can't pop an empty stack\n", line_num);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 	tmp = (*stack)->next;
 	free(*stack);
 	*stack = tmp;
+}
+/**
+ * swap - swaps the top two elements of the stack
+ * @stack: stack head
+ * @line_num: line number
+ */
+void swap(stack_t **stack, unsigned int line_num)
+{
+	stack_t *top;
+	stack_t *below_top;
+
+	top = *stack;
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	below_top = (*stack)->next;
+
+	top->prev = below_top;
+	below_top->prev = NULL;
+	top->next = below_top->next;
+	below_top->next = top;
+
+	*stack = below_top;
 }
