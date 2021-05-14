@@ -50,7 +50,7 @@ void sub(stack_t **stack, unsigned int line_num)
 	pop(stack, line_num);
 }
 /**
- * div - divides the second top element by the top element of stack
+ * _div - divides the second top element by the top element of stack
  * @stack: head of stack
  * @line_num: line number
  */
