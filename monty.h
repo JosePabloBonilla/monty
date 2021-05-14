@@ -51,5 +51,6 @@ void free_list(stack_t *stack);
 void pop(stack_t **stack, unsigned int line_num);
 void swap(stack_t **stack, unsigned int line_num);
 void add(stack_t **stack, unsigned int line_num);
+void sub(stack_t **stack, unsigned int line_num);
 
 #endif
