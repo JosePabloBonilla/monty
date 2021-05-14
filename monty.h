@@ -10,7 +10,7 @@
 #define EXIT_FAILURE 1
 
 extern char *store_var; /* global variable to store value*/
-
+char *store_var;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -49,5 +49,6 @@ void pall(stack_t **stack, unsigned int line_num);
 void pint(stack_t **stack, unsigned int line_num);
 void nop(stack_t **stack_t, unsigned int line_num);
 void free_list(stack_t *stack);
+void pop(stack_t **stack, unsigned int line_num);
 
 #endif

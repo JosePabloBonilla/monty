@@ -1,5 +1,4 @@
 #include "monty.h"
-char *store_var;
 /**
  * push - push element to stack
  * @stack: stack
@@ -71,4 +70,22 @@ void pint(stack_t **stack, unsigned int line_num)
 	}
 	tmp = *stack;
 	printf("%d\n", tmp->n);
+}
+/**
+ * pop - pop top node in stack
+ * @stack: stack
+ * @line_num: line number
+ */
+void pop(stack_t **stack, unsigned int line_num)
+{
+	stack_t *tmp = NULL;
+
+	if (*stack == NULL || stack == NULL)
+	{
+		printf("L%d: can't pop an empty stack\n");
+		exit(EXIT_FAILURE);
+	}
+	tmp = (*stack)->next;
+	free(*stack);
+	*stack = tmp;
 }
