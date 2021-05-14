@@ -21,6 +21,7 @@ void (*get_func(char *token))(stack_t **stack, unsigned int line_num)
 			{"nop", nop},
 			{"sub", sub},
 			{"div", _div},
+			{"mul", mul},
 			{NULL, NULL}
 	};
 
