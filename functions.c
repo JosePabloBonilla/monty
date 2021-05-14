@@ -1,4 +1,5 @@
 #include "monty.h"
+char *store_var;
 /**
  * push - push element to stack
  * @stack: stack

@@ -10,7 +10,6 @@
 #define EXIT_FAILURE 1
 
 extern char *store_var; /* global variable to store value*/
-char *store_var;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
